@@ -1,0 +1,50 @@
+<div id="content"></div>
+<script src="fetch.js"></script>
+<script>
+var root, data, onData;
+window.onload = function(){
+
+root = document.getElementById('content');
+fetch('/index.json')
+.then(function(json){
+data = JSON.parse(json);
+while (!onData);
+onData();
+})
+.catch(onError);
+
+new Promise(function(res, rej){
+onData = function() {
+res();
+}
+}).then(function(){
+if (data.index)
+data.index.forEach(function(entry){
+fetch(entry.name).then(addEntry).catch(onError);
+});
+});
+
+};
+
+function addEntry(e) {
+var text = document.createTextNode;
+var el = document.createElement('div');
+if (e.type === 'sound') {
+var el1 = document.createElement('a');
+el1.href = e.mp3;
+el1.innerText = 'ogg';
+var el2 = document.createElement('a');
+el2.href = e.ogg;
+el2.innerText = 'mp3';
+el.appendChild(text(e.artist + ' - ' + e.name));
+el.appendChild(el1);
+el.appendChild(text('|'));
+el.appendChild(el2);
+}
+root.appendChild(el);
+}
+
+function onError(error) {
+console.error('An error occurred:',error);
+}
+</script>
