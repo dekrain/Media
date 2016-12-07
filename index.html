@@ -23,7 +23,7 @@
   }).then(function(){
     if (data.index)
       data.index.forEach(function(entry){
-        fetch(entry.name).then(function(response){return response.json(); }).then(addEntry).catch(onError);
+        fetch(entry).then(function(response){return response.json(); }).then(addEntry).catch(onError);
       });
   });
 
