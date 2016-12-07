@@ -35,10 +35,10 @@
     if (e.type === 'audio') {
       var el1 = document.createElement('a');
       el1.href = e.mp3;
-      el1.innerText = 'ogg';
+      el1.innerText = 'mp3';
       var el2 = document.createElement('a');
       el2.href = e.ogg;
-      el2.innerText = 'mp3';
+      el2.innerText = 'ogg';
       el.appendChild(text(e.artist + ' - ' + e.name));
       el.appendChild(el1);
       el.appendChild(text('|'));
