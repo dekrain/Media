@@ -6,8 +6,8 @@
 
   root = document.getElementById('content');
   fetch('./index.json')
-  .then(function(json){
-    data = JSON.parse(json);
+  .then(function(response){
+    data = response.json();
     while (!onData);
     onData();
   })
@@ -20,7 +20,7 @@
   }).then(function(){
     if (data.index)
       data.index.forEach(function(entry){
-        fetch(entry.name).then(addEntry).catch(onError);
+        fetch(entry.name).then(function(response){return response.json(); }).then(addEntry).catch(onError);
       });
   });
 
