@@ -7,7 +7,10 @@
   root = document.getElementById('content');
   fetch('./index.json')
   .then(function(response){
-    data = response.json();
+    return response.json();
+  })
+  .then(function(json){
+    data = json;
     while (!onData);
     onData();
   })
