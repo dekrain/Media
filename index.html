@@ -29,7 +29,7 @@ fetch(entry.name).then(addEntry).catch(onError);
 function addEntry(e) {
 var text = document.createTextNode;
 var el = document.createElement('div');
-if (e.type === 'sound') {
+if (e.type === 'audio') {
 var el1 = document.createElement('a');
 el1.href = e.mp3;
 el1.innerText = 'ogg';
