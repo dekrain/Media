@@ -30,7 +30,7 @@
   };
 
   function addEntry(e) {
-    var text = document.createTextNode;
+    var text = document.createTextNode.bind(document);
     var el = document.createElement('div');
     if (e.type === 'audio') {
       var el1 = document.createElement('a');
