@@ -5,7 +5,7 @@ var root, data, onData;
 window.onload = function(){
 
 root = document.getElementById('content');
-fetch('/index.json')
+fetch('./index.json')
 .then(function(json){
 data = JSON.parse(json);
 while (!onData);
